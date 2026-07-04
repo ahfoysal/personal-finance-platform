@@ -1,0 +1,31 @@
+{
+  "background_color": "#FFFFFF",
+  "categories": ["finance", "utilities"],
+  "description": "Vault — your wealth, all in one place.",
+  "display": "standalone",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "src": "/assets/android-chrome-192x192.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "/assets/android-chrome-512x512.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "/assets/android-chrome-512x512.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "Vault",
+  "orientation": "portrait",
+  "short_name": "Vault",
+  "start_url": "/${languageCode}/",
+  "theme_color": "#FFFFFF",
+  "url": "${rootUrl}"
+}

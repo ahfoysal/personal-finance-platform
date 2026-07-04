@@ -1,0 +1,26 @@
+{
+  "repo": "personal-finance-platform",
+  "checks": {
+    "package_json": "valid",
+    "package": {
+      "name": "personal-finance-platform",
+      "private": false,
+      "description": "A self-hosted wealth tracking and portfolio analytics platform prepared as a white-label public snapshot.",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/ahfoysal/personal-finance-platform.git"
+      }
+    },
+    "readme_present": true,
+    "gitignore_present": true,
+    "forbidden_paths_count": 0,
+    "forbidden_paths": [],
+    "token_hits": [],
+    "forbidden_publication_wording_hits": [],
+    "large_files_over_95mb": [],
+    "git_status_entries_before_commit": [
+      "M PUBLISHING_REPORT.md"
+    ]
+  },
+  "blockers": []
+}
