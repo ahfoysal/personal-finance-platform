@@ -2,7 +2,8 @@ import {
   extractNumberFromString,
   getNumberFormatGroup,
   isCurrency,
-  isCurrencySymbol
+  isCurrencySymbol,
+  isRootCurrency
 } from '@ghostfolio/common/helper';
 
 describe('Helper', () => {
@@ -173,6 +174,21 @@ describe('Helper', () => {
 
     it('Empty symbol', () => {
       expect(isCurrencySymbol('')).toEqual(false);
+    });
+  });
+
+  describe('Is root currency', () => {
+    it('Root currency code', () => {
+      expect(isRootCurrency('USD')).toEqual(true);
+      expect(isRootCurrency('GBP')).toEqual(true);
+    });
+
+    it('Non-root derived currency', () => {
+      expect(isRootCurrency('GBp')).toEqual(false);
+    });
+
+    it('Non-currency', () => {
+      expect(isRootCurrency('AAPL')).toEqual(false);
     });
   });
 });

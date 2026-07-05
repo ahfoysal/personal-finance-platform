@@ -456,7 +456,7 @@ export function isRootCurrency(aCurrency: string) {
     return true;
   }
 
-  return DERIVED_CURRENCIES.find(({ rootCurrency }) => {
+  return DERIVED_CURRENCIES.some(({ rootCurrency }) => {
     return rootCurrency === aCurrency;
   });
 }
