@@ -67,7 +67,9 @@ describe('Helper', () => {
     });
 
     it('Get de-CH number format group', () => {
-      expect(getNumberFormatGroup('de-CH')).toEqual(getGroupingSeparator('de-CH'));
+      expect(getNumberFormatGroup('de-CH')).toEqual(
+        getGroupingSeparator('de-CH')
+      );
     });
 
     it('Get de-CH number format group when it is default', () => {
