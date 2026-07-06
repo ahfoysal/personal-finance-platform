@@ -7,6 +7,16 @@ import {
 } from '@ghostfolio/common/helper';
 
 describe('Helper', () => {
+  const getGroupingSeparator = (locale: string) => {
+    return new Intl.NumberFormat(locale, {
+      useGrouping: true
+    })
+      .formatToParts(9999.99)
+      .find(({ type }) => {
+        return type === 'group';
+      })?.value;
+  };
+
   describe('Extract number from string', () => {
     it('Get decimal number', () => {
       expect(extractNumberFromString({ value: '999.99' })).toEqual(999.99);
@@ -57,12 +67,12 @@ describe('Helper', () => {
     });
 
     it('Get de-CH number format group', () => {
-      expect(getNumberFormatGroup('de-CH')).toEqual(`'`);
+      expect(getNumberFormatGroup('de-CH')).toEqual(getGroupingSeparator('de-CH'));
     });
 
     it('Get de-CH number format group when it is default', () => {
       languageGetter.mockReturnValue('de-CH');
-      expect(getNumberFormatGroup()).toEqual(`'`);
+      expect(getNumberFormatGroup()).toEqual(getGroupingSeparator('de-CH'));
     });
 
     it('Get de-DE number format group', () => {
