@@ -5,9 +5,18 @@ import {
 } from '@ghostfolio/common/config';
 
 import { Injectable, OnModuleInit } from '@nestjs/common';
+import { existsSync, readFileSync } from 'fs';
+import { join } from 'path';
 
-const cryptocurrencies = require('../../assets/cryptocurrencies/cryptocurrencies.json');
-const customCryptocurrencies = require('../../assets/cryptocurrencies/custom.json');
+function readCryptocurrencyMap(fileName: string): Record<string, string> {
+  const filePath = join(__dirname, '../../assets/cryptocurrencies', fileName);
+
+  if (!existsSync(filePath)) {
+    return {};
+  }
+
+  return JSON.parse(readFileSync(filePath, 'utf8')) as Record<string, string>;
+}
 
 @Injectable()
 export class CryptocurrencyService implements OnModuleInit {
@@ -20,6 +29,8 @@ export class CryptocurrencyService implements OnModuleInit {
       await this.propertyService.getByKey<Record<string, string>>(
         PROPERTY_CUSTOM_CRYPTOCURRENCIES
       );
+    const cryptocurrencies = readCryptocurrencyMap('cryptocurrencies.json');
+    const customCryptocurrencies = readCryptocurrencyMap('custom.json');
 
     this.combinedCryptocurrencies = [
       ...Object.keys(cryptocurrencies),
